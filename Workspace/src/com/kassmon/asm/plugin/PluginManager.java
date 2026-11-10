@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.kassmon.asm.runtime.data.Registers;
 
+@SuppressWarnings("unused")
 public class PluginManager {
 	
 	private Registers registers;

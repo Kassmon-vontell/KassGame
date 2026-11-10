@@ -2,18 +2,19 @@ package com.kassmon.asm.staments.commands.control.register;
 
 import com.kassmon.asm.staments.commands.CommandStatment;
 
-public class LoadAddress extends CommandStatment {
+public class WriteRegister extends CommandStatment {
 	
-	public int registerPointer;
+	public int value, registerPointer;
 	
-	public LoadAddress(int lineNumber, boolean advanceProgramCounter, int registerPointer) {
-		super(lineNumber, advanceProgramCounter);
+	public WriteRegister(int lineNumber, int value, int registerPointer) {
+		super(lineNumber, true);
+		this.value = value;
 		this.registerPointer = registerPointer;
 	}
-
+	
 	@Override
 	public void execute() {
-		registers.setAddressRegister(registers.read(registerPointer));
+		this.registers.write(registerPointer, value);
 	}
 
 	@Override

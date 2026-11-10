@@ -5,8 +5,6 @@ import java.util.regex.Matcher;
 
 import com.kassmon.common.exceptions.ErrorException;
 
-import static com.kassmon.asm.lexer.TokenType.*;
-
 public class Lexer {
 	
 	private String input;
@@ -20,20 +18,8 @@ public class Lexer {
 	}
 	
 	public void initFixedTokens() {
-		addTokenPattern("#[a-zA-Z]+", FLAG);
-		
-		addTokenPattern("0x[0-9a-f]+\\b",HEX);
-		addTokenPattern("-?[0-9]+\\b",INTEGER);
-		addTokenPattern("cxspc\\b",CHARACTER);
-		addTokenPattern("cxlf", CHARACTER);
-		addTokenPattern("cx[a-zA-Z0-9]\\b",CHARACTER);
-		
-		addTokenPattern(":[a-zA-Z_][a-zA-Z0-9_]*\\b",LABEL);
-		
-		addTokenPattern("!.*",COMMENT);
-		
-		addTokenPattern("[ \t]+",SPACE);
-		addTokenPattern("(?:\r\n|\n|\r)", NEWLINE);
+		//TODO: add fixed tokens and their regexes
+		//TODO: add commmandTokens and their regexes
 	}
 	
 	public void addTokenPattern(String regex, TokenType type) {
