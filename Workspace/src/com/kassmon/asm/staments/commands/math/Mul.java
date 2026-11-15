@@ -6,7 +6,7 @@ public class Mul extends CommandStatment {
 	
 	private int registerPointerSrc1, registerPointerSrc2, registerPointerDest;
 	
-	public Mul(int lineNumber) {
+	public Mul(int lineNumber, int registerPointerSrc1, int registerPointerSrc2, int registerPointerDest) {
 		super(lineNumber, true);
 		this.registerPointerSrc1 = registerPointerSrc1;
 		this.registerPointerSrc2 = registerPointerSrc2;

@@ -1,7 +1,7 @@
 package com.kassmon.asm.lexer;
 
 public enum TokenType {
-	STATMENT,
+	STATEMENT,
 	
 	INTEGER,
 	HEX,
@@ -11,11 +11,8 @@ public enum TokenType {
 	
 	COMMENT,
 	
-	FLAG,
-	
 	SPACE,
 	NEWLINE,
-	ERROR,
 	EOF
 
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.kassmon.asm.runtime.data.Registers;
 
-@SuppressWarnings("unused")
 public class PluginManager {
 	
 	private Registers registers;
@@ -19,12 +18,21 @@ public class PluginManager {
 	}
 	
 	public int read() {
-		//TODO: Implement reading from plugins
+		for (Plugin plugin : this.plugins) {
+			if (registers.getAddressRegister() >= plugin.getMemoryStartAddress() && registers.getAddressRegister() <= plugin.getMemoryEndAddress()) {
+				return plugin.read(registers.getAddressRegister());
+			}
+		}
 		return 0;
 	}
 	
 	public void write(int value) {
-		//TODO: Implement writing to plugins
+		for (Plugin plugin : this.plugins) {
+			if (registers.getAddressRegister() >= plugin.getMemoryStartAddress() && registers.getAddressRegister() <= plugin.getMemoryEndAddress()) {
+				plugin.write(registers.getAddressRegister(), value);
+				return;
+			}
+		}
 	}
 	
 }

@@ -6,7 +6,7 @@ public class StoreAddress extends CommandStatment {
 	
 	int registerPointer;
 	
-	public StoreAddress(int lineNumber, boolean advanceProgramCounter, int registerPointer) {
+	public StoreAddress(int lineNumber, int registerPointer) {
 		super(lineNumber, true);
 		this.registerPointer = registerPointer;
 	}

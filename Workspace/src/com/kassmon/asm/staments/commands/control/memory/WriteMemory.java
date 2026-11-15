@@ -6,7 +6,7 @@ public class WriteMemory extends CommandStatment {
 	
 	public int value;
 	
-	public WriteMemory(int lineNumber, int value, int memoryPointer) {
+	public WriteMemory(int lineNumber, int value) {
 		super(lineNumber, true);
 		this.value = value;
 	}

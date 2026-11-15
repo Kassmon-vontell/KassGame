@@ -3,6 +3,7 @@ package com.kassmon.asm.staments.commands;
 import com.kassmon.asm.plugin.PluginManager;
 import com.kassmon.asm.runtime.data.LabelPointers;
 import com.kassmon.asm.runtime.data.Registers;
+import com.kassmon.asm.runtime.data.Status;
 import com.kassmon.asm.staments.Statment;
 
 public abstract class CommandStatment extends Statment {
@@ -10,6 +11,7 @@ public abstract class CommandStatment extends Statment {
 	protected Registers registers;
 	protected LabelPointers labelPointers;
 	protected PluginManager pluginManager;
+	protected Status status;
 	protected boolean advanceProgramCounter = false;
 	
 	public CommandStatment(int lineNumber, boolean advanceProgramCounter) {
@@ -27,6 +29,10 @@ public abstract class CommandStatment extends Statment {
 	
 	public void setPluginManager(PluginManager pluginManager) {
 		this.pluginManager = pluginManager;
+	}
+	
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 	
 	public abstract void execute();

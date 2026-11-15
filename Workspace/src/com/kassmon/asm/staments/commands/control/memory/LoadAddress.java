@@ -6,8 +6,8 @@ public class LoadAddress extends CommandStatment {
 	
 	public int registerPointer;
 	
-	public LoadAddress(int lineNumber, boolean advanceProgramCounter, int registerPointer) {
-		super(lineNumber, advanceProgramCounter);
+	public LoadAddress(int lineNumber, int registerPointer) {
+		super(lineNumber, true);
 		this.registerPointer = registerPointer;
 	}
 
