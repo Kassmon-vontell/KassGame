@@ -2,12 +2,16 @@ package com.kassmon.asm.runtime.data;
 
 public class Registers {
 	
-	private int[] registers;
-	private int addressRegister;
 	
-	private boolean isEqual = false;
-	private boolean isGreater = false;
-	private boolean isLess = false;
+	
+	private final static int bitMaskEqual = 0b100000000;
+	private final static int bitMaskGreater = 0b1000000000;
+	private final static int bitMaskLess = 0b10000000000;
+	
+	
+	private int[] registers;
+	private int ProgramCounter;
+	private int flags;
 	
 	public Registers(int size) {
 		this.registers = new int[size];
@@ -29,36 +33,54 @@ public class Registers {
 		this.registers = registers;
 	}
 	
-	public int getAddressRegister() {
-		return addressRegister;
+	public int getProgramCounter() {
+		return ProgramCounter;
 	}
 	
-	public void setAddressRegister(int addressRegister) {
-		this.addressRegister = addressRegister;
+	public void setProgramCounter(int programCounter) {
+		ProgramCounter = programCounter;
+	}
+	
+	public void setEqual(boolean value) {
+		if(value) {
+			flags |= bitMaskEqual;
+		} else {
+			flags &= ~bitMaskEqual;
+		}
+	}
+	
+	public void setGreater(boolean value) {
+		if(value) {
+			flags |= bitMaskGreater;
+		} else {
+			flags &= ~bitMaskGreater;
+		}
+	}
+	
+	public void setLess(boolean value) {
+		if(value) {
+			flags |= bitMaskLess;
+		} else {
+			flags &= ~bitMaskLess;
+		}
 	}
 	
 	public boolean isEqual() {
-		return isEqual;
+		return (flags & bitMaskEqual) != 0;
 	}
 	
-	public void setEqual(boolean isEqual) {
-		this.isEqual = isEqual;
+	public boolean isNotEqual() {
+		return (flags & bitMaskEqual) == 0;
 	}
 	
 	public boolean isGreater() {
-		return isGreater;
-	}
-	
-	public void setGreater(boolean isGreater) {
-		this.isGreater = isGreater;
+		return (flags & bitMaskGreater) != 0;
 	}
 	
 	public boolean isLess() {
-		return isLess;
+		return (flags & bitMaskLess) != 0;
 	}
 	
-	public void setLess(boolean isLess) {
-		this.isLess = isLess;
-	}
+	
 	
 }

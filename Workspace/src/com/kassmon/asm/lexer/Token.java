@@ -33,6 +33,8 @@ public class Token {
 			case HEX -> "HEX: " + lexeme + " (line: " + line + ")";
 			case CHARACTER -> "CHARACTER: " + lexeme + " (line: " + line + ")";
 			
+			case REGISTER -> "REGISTER: " + lexeme + " (line: " + line + ")";
+			
 			case LABEL -> "LABEL: " + lexeme + " (line: " + line + ")";
 			
 			case COMMENT -> "COMMENT: " + lexeme + " (line: " + line + ")";

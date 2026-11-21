@@ -7,6 +7,8 @@ public enum TokenType {
 	HEX,
 	CHARACTER,
 	
+	REGISTER,
+	
 	LABEL,
 	
 	COMMENT,
