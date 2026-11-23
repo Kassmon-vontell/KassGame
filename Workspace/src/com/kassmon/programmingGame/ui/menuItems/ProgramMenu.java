@@ -1,4 +1,4 @@
-package com.kassmon.game.ui.menuItems;
+package com.kassmon.programmingGame.ui.menuItems;
 
 import javax.swing.*;
 

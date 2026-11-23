@@ -1,4 +1,4 @@
-package com.kassmon.game.data.generic.email;
+package com.kassmon.programmingGame.data.generic.email;
 
 public abstract class Email {
 	

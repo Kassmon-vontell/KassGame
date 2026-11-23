@@ -1,5 +1,6 @@
 package com.kassmon.asm.statement.commands.basic.control;
 
+import com.kassmon.asm.exceptions.MemoryOutOfBoundsException;
 import com.kassmon.asm.exceptions.ScriptException;
 import com.kassmon.asm.statement.arguments.Argument;
 import com.kassmon.asm.statement.arguments.ArgumentType;
@@ -21,7 +22,11 @@ public class Store extends CommandStatment {
 			throw new ScriptException("First argument must be a register");
 		int registerAddress = getValueFromArgument(register);
 		int value = memory.read(getValueFromArgument(memAddress));
-		registers.write(registerAddress, value);
+		try {
+			registers.write(registerAddress, value);
+		} catch (MemoryOutOfBoundsException e) {
+			throw new ScriptException("Memory out of bounds on line: " + lineNumber, e);
+		}
 	}
 
 	@Override

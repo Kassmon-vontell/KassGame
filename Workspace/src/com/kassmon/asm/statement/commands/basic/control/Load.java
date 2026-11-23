@@ -1,5 +1,7 @@
 package com.kassmon.asm.statement.commands.basic.control;
 
+import com.kassmon.asm.exceptions.MemoryOutOfBoundsException;
+import com.kassmon.asm.exceptions.ScriptException;
 import com.kassmon.asm.statement.arguments.Argument;
 import com.kassmon.asm.statement.commands.CommandStatment;
 
@@ -15,7 +17,11 @@ public class Load extends CommandStatment {
 
 	@Override
 	public void execute() {
-		memory.write(getValueFromArgument(memAddress), getValueFromArgument(value));
+		try {
+			memory.write(getValueFromArgument(memAddress), getValueFromArgument(value));
+		} catch (MemoryOutOfBoundsException e) {
+			throw new ScriptException("Memory out of bounds on line: " + lineNumber, e);
+		}
 	}
 
 	@Override

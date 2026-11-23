@@ -2,12 +2,9 @@ package com.kassmon.asm.runtime.data;
 
 public class Registers {
 	
-	
-	
 	private final static int bitMaskEqual = 0b100000000;
 	private final static int bitMaskGreater = 0b1000000000;
 	private final static int bitMaskLess = 0b10000000000;
-	
 	
 	private int[] registers;
 	private int ProgramCounter;

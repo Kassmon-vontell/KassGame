@@ -17,7 +17,7 @@ public class Label extends Statment {
 	
 	@Override
 	public String toString() {
-		return "label: " + label.toString();
+		return ":" + label;
 	}
 	
 }

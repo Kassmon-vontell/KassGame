@@ -1,4 +1,4 @@
-package com.kassmon.game.ui;
+package com.kassmon.programmingGame.ui;
 
 import javax.swing.*;
 

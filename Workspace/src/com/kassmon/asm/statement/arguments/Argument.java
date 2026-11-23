@@ -18,4 +18,11 @@ public class Argument {
 		return value;
 	}
 	
+	@Override
+	public String toString() {
+		if (type == ArgumentType.LITERAL) return String.valueOf(value);
+		return ("r" + value);
+		
+	}
+	
 }
