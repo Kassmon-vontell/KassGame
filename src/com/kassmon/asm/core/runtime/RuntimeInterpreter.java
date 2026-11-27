@@ -57,15 +57,18 @@ public class RuntimeInterpreter{
 		if(registers.isTerminated()) return;
 		if(registers.isWaiting()) return;
 		script.get(registers.getProgramCounter()).execute();
+		if (script.get(registers.getProgramCounter()).advanceProgramCounter())
+			registers.setProgramCounter(registers.getProgramCounter() + 1);
 	}
 	
 	public void executeScript() {
 		if (hasError) return;
 		while (true) {
-			if (registers.isTerminated()) break;
-			if (registers.isWaiting()) break;
-			script.get(registers.getProgramCounter()).execute();
-			if (script.get(registers.getProgramCounter()).advanceProgramCounter())
+			if (registers.isTerminated()) return;
+			if (registers.isWaiting()) return;
+			CommandStatement cs = script.get(registers.getProgramCounter());
+			cs.execute();
+			if (cs.advanceProgramCounter())
 				registers.setProgramCounter(registers.getProgramCounter() + 1);
 		}
 	}

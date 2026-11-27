@@ -13,8 +13,12 @@ public class JumpEqual extends CommandStatement{
 
 	@Override
 	public void execute() {
-		if(registers.isEqual()) 
+		if(registers.isEqual()){
 			registers.setProgramCounter(labelPointers.getLabelPointer(label));
+			advanceProgramCounter = false;
+			return;
+		}
+		advanceProgramCounter = true;
 	}
 
 	@Override

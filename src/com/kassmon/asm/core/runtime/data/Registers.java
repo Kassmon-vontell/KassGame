@@ -1,18 +1,18 @@
 package com.kassmon.asm.core.runtime.data;
 
-@SuppressWarnings("unused")
+
 public class Registers {
 	
-	private final static int terminated = 0b00000001;
-	private final static int waiting = 0b00000010;
+	private boolean terminated = false;
+	private boolean waiting = false;
 	
-	private final static int bitMaskEqual = 0b100000000;
-	private final static int bitMaskGreater = 0b1000000000;
-	private final static int bitMaskLess = 0b10000000000;
+	private boolean equal = false;
+	private boolean greater = false;
+	private boolean less = false;
 	
 	private int[] registers;
 	private int ProgramCounter;
-	private int flags;
+	
 	
 	public Registers(int size) {
 		this.registers = new int[size];
@@ -45,69 +45,49 @@ public class Registers {
 	
 	
 	public void setEqual(boolean value) {
-		if(value) {
-			flags |= bitMaskEqual;
-		} else {
-			flags &= ~bitMaskEqual;
-		}
+		equal = value;
 	}
 	
 	public void setGreater(boolean value) {
-		if(value) {
-			flags |= bitMaskGreater;
-		} else {
-			flags &= ~bitMaskGreater;
-		}
+		greater = value;
 	}
 	
 	public void setLess(boolean value) {
-		if(value) {
-			flags |= bitMaskLess;
-		} else {
-			flags &= ~bitMaskLess;
-		}
+		less = value;
 	}
 	
 	public boolean isEqual() {
-		return (flags & bitMaskEqual) != 0;
+		return equal;
 	}
 	
 	public boolean isNotEqual() {
-		return (flags & bitMaskEqual) == 0;
+		return !equal;
 	}
 	
 	public boolean isGreater() {
-		return (flags & bitMaskGreater) != 0;
+		return greater;
 	}
 	
 	public boolean isLess() {
-		return (flags & bitMaskLess) != 0;
+		return less;
 	}
 	
 	
 	
 	public void setTerminated(boolean isTerminated) {
-		if(isTerminated) {
-			flags |= terminated;
-		} else {
-			flags &= ~terminated;
-		}
+		terminated = isTerminated;
 	}
 	
 	public boolean isTerminated() {
-		return (flags & terminated) != 0;
+		return terminated;
 	}
 	
 	public void setWaiting(boolean isWaiting) {
-		if(isWaiting) {
-			flags |= waiting;
-		} else {
-			flags &= ~waiting;
-		}
+		waiting = isWaiting;
 	}
 	
 	public boolean isWaiting() {
-		return (flags & waiting) != 0;
+		return waiting;
 	}
 	
 }

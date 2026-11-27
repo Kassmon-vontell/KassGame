@@ -49,7 +49,10 @@ public class Lexer {
         StringBuilder unknownCharacters = new StringBuilder();
         while (true) {
             Token token = getToken(true);
-            if (token == null) unknownCharacters.append(input.charAt(0));
+            if (token == null){
+                unknownCharacters.append(input.charAt(0));
+                continue;
+            }
             if (!unknownCharacters.isEmpty())
                 throw new LexerException("unknown token: " + unknownCharacters);
             

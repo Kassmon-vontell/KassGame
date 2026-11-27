@@ -5,14 +5,13 @@ import com.kassmon.asm.core.runtime.RuntimeInterpreter;
 public class ScriptTests{
 	
 	public static boolean runtimeTest() {
-		String script = "mov r0 0x1\n";
+		String script = ":init\n mov r0 0x1\n :start\n add r0 1\n cmp r0 0x10\n jlt start\n";
 		
 		RuntimeInterpreter interpreter = new RuntimeInterpreter(script);
+		
 		interpreter.executeScript();
-		if (interpreter.getRegisters().read(0) != 1){
-			System.out.println ("runtime test failed: r0 != 1");
+		if (interpreter.getRegisters().read(0) != 0x10)
 			return false;
-		}
 		
 		return true;
 	}

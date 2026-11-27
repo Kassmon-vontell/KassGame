@@ -7,14 +7,18 @@ public class JumpLessThan extends CommandStatement{
 	private final String label;
 	
 	public JumpLessThan(int lineNumber, String label) {
-		super(lineNumber, false);
+		super(lineNumber, true);
 		this.label = label;
 	}
 
 	@Override
 	public void execute() {
-		if(registers.isLess()) 
+		if(registers.isLess()){
 			registers.setProgramCounter(labelPointers.getLabelPointer(label));
+			advanceProgramCounter = false;
+			return;
+		}
+		advanceProgramCounter = true;
 	}
 
 	@Override
